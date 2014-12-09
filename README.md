@@ -5,7 +5,7 @@ Reports the resource usage of Docker containers to InfluxDB
 
 ## Usage
 
-```bash
+```sh
 
 python report.py 
 
@@ -13,7 +13,7 @@ python report.py
 
 For continous reporting with 5 seconds interval:
 
-```bash
+```sh
 
 watch python report.py
 
