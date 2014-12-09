@@ -1,10 +1,8 @@
-# tree format
-treeroot:
-    branch1:
-        name: Node 1
-        branch1-1:
-            name: Node 1-1
-    branch2:
-        name: Node 2
-        branch2-1:
-            name: Node 2-1
+docker:
+    api: "http://localhost:4500"
+influxdb:
+    host: localhost
+    user: root
+    password: root
+    port: 8086
+    database: docker
