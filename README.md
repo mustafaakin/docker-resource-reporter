@@ -7,7 +7,7 @@ Reports the resource usage of Docker containers to InfluxDB
 
 ```bash
 
-	python report.py 
+python report.py 
 
 ```
 
@@ -15,7 +15,7 @@ For continous reporting with 5 seconds interval:
 
 ```bash
 
-	watch python report.py
+watch python report.py
 
 ```
 
@@ -25,13 +25,13 @@ Edit the `config.yaml` file to config your InfluxDB parameters and Docker Remote
 
 ```yaml
 
-	docker:
-	    api: "http://localhost:4500"
-	influxdb:
-	    host: localhost
-	    user: root
-	    password: root
-	    port: 8086
-	    database: docker
+docker:
+    api: "http://localhost:4500"
+influxdb:
+    host: localhost
+    user: root
+    password: root
+    port: 8086
+    database: docker
 
 ```
