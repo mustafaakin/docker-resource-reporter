@@ -58,7 +58,7 @@ SELECT derivative(Total) FROM /.*cpu/ GROUP BY time(5s)
 ```
 ![cpu](https://raw.githubusercontent.com/mustafaakin/docker-resource-reporter/master/examples/cpu.png)
 
-Note: I run a 4 core VM under VirtualBox, 1G means = 1 second, I run `sysbench --test=cpu --cpu-max-prime=50000 --num-threads=1` then canceled it and run it with 2, 4 and 32 threads to show that 2G means 2 second consumed in total, and 4G means 4 second consumed, and if we have more threads the performance drops a little because of switching cost, it is not full 4G. Anyways, it should indicate
+Note: I run a 4 core VM under VirtualBox, 1G means = 1 second, I run `sysbench --test=cpu --cpu-max-prime=50000 --num-threads=1` then canceled it and run it with 2, 4 and 32 threads to show that 2G means 2 second consumed in total, and 4G means 4 second consumed, and if we have more threads the performance drops a little because of switching cost, it is not full 4G. Anyways, it should indicate the total time spend in each core. If you want to query the individual cores, you can use CPU0, CPU1, ... CPU(N-1) on your depending on core number of your machine. 
 
 ### Bytes read/write speed from/to Disk 
 
