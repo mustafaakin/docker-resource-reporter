@@ -14,10 +14,10 @@ class InfluxDBReporter:
 		b = metrics["bytes"]
 		json_body = [{
 		    "points": [
-		       [self.hostname, id, b["Read"], b["Write"], b["Total"], b["Sync"], b["Async"]]
+		       [b["Read"], b["Write"], b["Total"], b["Sync"], b["Async"]]
 		    ],
-		    "name": "disk.bytes",
-		    "columns": ["hostname", "ID", "Read", "Write", "Total", "Sync", "Async"]
+		    "name": self.hostname + "."  + id + ".disk.bytes",
+		    "columns": ["Read", "Write", "Total", "Sync", "Async"]
 		}]
 		self.client.write_points(json_body)
 
@@ -25,17 +25,17 @@ class InfluxDBReporter:
 		c = metrics["count"]
 		json_body = [{
 		    "points": [
-		       [self.hostname, id, c["Read"], c["Write"], c["Total"], c["Sync"], c["Async"]]
+		       [c["Read"], c["Write"], c["Total"], c["Sync"], c["Async"]]
 		    ],
-		    "name": "disk.count",
-		    "columns": ["hostname", "ID", "Read", "Write", "Total", "Sync", "Async"]
+		    "name": self.hostname + "."  + id + ".disk.count",
+		    "columns": ["Read", "Write", "Total", "Sync", "Async"]
 		}]
 		self.client.write_points(json_body)
 
 
 	def reportCpu(self, id, metrics):
-		points = [id, self.hostname, metrics["total"]]
-		columns = ["ID", "hostname", "Total"]
+		points = [metrics["total"]]
+		columns = ["Total"]
 		
 		# There might be many cpus, store values as CPU0-value, CPU1-value..
 		for idx, cpu in enumerate(metrics["cpus"]):
@@ -44,15 +44,15 @@ class InfluxDBReporter:
 
 		json_body = [{
 		    "points": [points],
-		    "name": "cpu",
+		    "name": self.hostname + "."  + id + ".cpu",
 		    "columns": columns
 		}]
 
 		self.client.write_points(json_body)
 
 	def reportMemory(self, id, metrics):		
-		points = [id, self.hostname]
-		columns = ["ID", "hostname"]
+		points = []
+		columns = []
 
 		# Iterates over all memory metrics, can be altered to report only specific fields such as rss
 		for key, value in metrics.iteritems():
@@ -61,7 +61,7 @@ class InfluxDBReporter:
 
 		json_body = [{
 		    "points": [points],
-		    "name": "memory",
+		    "name": self.hostname + "."  + id + ".memory",
 		    "columns": columns
 		}]
 

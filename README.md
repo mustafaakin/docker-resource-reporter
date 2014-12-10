@@ -7,7 +7,7 @@ Reports the resource usage of Docker containers to InfluxDB
 
 ```sh
 
-	pip install pyyaml influxdb
+pip install pyyaml influxdb
 
 ```
 
@@ -44,4 +44,32 @@ influxdb:
     port: 8086
     database: docker
 
+```
+
+
+## Sample Queries
+
+
+### The memory usage of containers over time
+
+```sql
+SELECT rss FROM /.*memory/ GROUP BY time(15s)
+```
+
+### CPU utilization, time spent in all CPUs (time in nanoseconds)
+
+```sql
+SELECT derivative(Total) FROM /.*cpu/ GROUP BY time(5s) 
+```
+
+### Bytes read/write speed from/to Disk 
+
+```sql
+SELECT Derivative(Total) FROM /.*disk.bytes/ GROUP BY time(5s)
+```
+
+### Number of Asynchronous IO Requests
+
+```sql
+SELECT Async FROM /.*disk.count/
 ```
