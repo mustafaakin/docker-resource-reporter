@@ -63,6 +63,9 @@ SELECT rss FROM /.*memory/ GROUP BY time(15s)
 ```sql
 SELECT derivative(Total) FROM /.*cpu/ GROUP BY time(5s) 
 ```
+![cpu](https://raw.githubusercontent.com/mustafaakin/docker-resource-reporter/master/examples/cpu.png)
+
+Note: I had a 8 core machine, so 8M means it spent 8million nanoseconds = 8 seconds, meaning it was full utilization
 
 ### Bytes read/write speed from/to Disk 
 
@@ -70,8 +73,14 @@ SELECT derivative(Total) FROM /.*cpu/ GROUP BY time(5s)
 SELECT Derivative(Total) FROM /.*disk.bytes/ GROUP BY time(5s)
 ```
 
+![memory](https://raw.githubusercontent.com/mustafaakin/docker-resource-reporter/master/examples/bytes.png)
+
 ### Number of Asynchronous IO Requests
 
 ```sql
 SELECT Async FROM /.*disk.count/
 ```
+
+![memory](https://raw.githubusercontent.com/mustafaakin/docker-resource-reporter/master/examples/async.png)
+
+Note: It is the sum of values, not the speed. If you want speed, you have to take the derivative of the values by derivative() operator.
