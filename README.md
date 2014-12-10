@@ -3,6 +3,16 @@ docker-resource-reporter
 
 Reports the resource usage of Docker containers to InfluxDB
 
+## Installation
+
+```sh
+
+	pip install pyyaml influxdb
+
+```
+
+Also you need to have created a InfluxDB already, this code does not create the database for you.
+
 ## Usage
 
 ```sh
