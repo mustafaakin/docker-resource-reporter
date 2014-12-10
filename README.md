@@ -56,6 +56,8 @@ influxdb:
 SELECT rss FROM /.*memory/ GROUP BY time(15s)
 ```
 
+![memory](https://raw.githubusercontent.com/mustafaakin/docker-resource-reporter/master/examples/memory.png)
+
 ### CPU utilization, time spent in all CPUs (time in nanoseconds)
 
 ```sql
